@@ -1,0 +1,21 @@
+#container {
+    display: grid;
+    padding: 0;
+    height: 600px;
+    width: 700px;
+    border: 3px solid black;
+    margin-top: 7%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3%;
+    grid-template-rows: repeat(var(--grid-rows), 1fr);
+    grid-template-columns: repeat(var(--grid-cols), 1fr);
+    
+  }
+
+button{
+    margin-left: 45%;
+    width: 10%;
+    height: auto;
+    margin-top: 1%;
+}
