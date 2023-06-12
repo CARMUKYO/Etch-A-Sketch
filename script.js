@@ -43,8 +43,6 @@ function enableMultiColor(){
     }
 }
 
-hovered();
-
 function getNewBoard(){
     let squares = '';
     let removeOldGrid = document.getElementById("container");
