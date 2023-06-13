@@ -1,6 +1,6 @@
 const container = document.getElementById("container");
 
-function makeRows (rows, columns){
+function makeGrid (rows, columns){
     container.style.setProperty('--grid-rows', rows);
     container.style.setProperty('--grid-cols', columns);
 
@@ -10,57 +10,47 @@ function makeRows (rows, columns){
     }
 }
 
-makeRows(16, 16);
+makeGrid(16, 16);
 
-let paint = document.getElementsByClassName("grid-item");
+function hovered(colorType){  
+    let etch = document.getElementsByClassName("grid-item");
 
-function hovered(){  
-    for (let i = 0; i < paint.length; i++){
-        paint[i].addEventListener('mouseover', function(){
+    if(colorType =='colored'){
+        for (let i = 0; i < etch.length; i++){
+            etch[i].addEventListener('mouseover', function(){
+                this.style.backgroundColor = getRandomColor();
+            });
+        }
+    }
+
+    else if(colorType == 'black') {
+        for (let i = 0; i < etch.length; i++){
+            etch[i].addEventListener('mouseover', function(){
             this.style.backgroundColor = "black";
         });
-
     }
+ } 
 }
 
 function getRandomColor(){
     let letters = '0123456789ABCDEF';
-    let color = '#';
+    let hex = '#';
 
     for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
+        hex += letters[Math.floor(Math.random() * 16)];
     }
-    return color;
+    return hex;
   }
   
-function enableMultiColor(){
-    paint = document.getElementsByClassName("grid-item");
-
-    for (let i = 0; i < paint.length; i++){
-        paint[i].addEventListener('mouseover', function(){
-            this.style.backgroundColor = getRandomColor();
-        });
-    }
-}
-
-function getNewBoard(){
+function getNewBoard(){    
     let squares = '';
     let removeOldGrid = document.getElementById("container");
     removeOldGrid.innerHTML = '';
 
     do{
-    squares = prompt('How many number of squares per side? Number should be eual or lower than 100.',0);
-    console.log(squares);
+        squares = prompt('How many number of squares per side? Number should be eual or lower than 100.',0);
     } while (squares > 100);
     
-    makeRows(squares, squares);
-    paint = document.getElementsByClassName("grid-item");
-    hovered();
-}
-
-function clearBoard(){
-    for (let i = 0; i < paint.length; i++){
-        paint[i].style.backgroundColor = "";  
-    }
-    getNewBoard();
+    makeGrid(squares, squares);
+    hovered('black');
 }

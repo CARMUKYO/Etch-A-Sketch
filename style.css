@@ -10,8 +10,11 @@
     margin-bottom: 3%;
     grid-template-rows: repeat(var(--grid-rows), 1fr);
     grid-template-columns: repeat(var(--grid-cols), 1fr);
-    
   }
+
+.grid-item{
+  border: 1px solid black;
+}
 
 button{
     margin-left: 45%;
